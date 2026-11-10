@@ -1,0 +1,18 @@
+Tareas a realizar
+-----------------
+
+1. Realizar el EDA del dataset
+	a. Reemplazar valores faltantes por valores adecuados, siguiendo criterios coherentes a los observados en el EDA.
+	b. El último atributo (rings) tiene 29 valores distintas. Agruparlos en tres categorías: joven (1..10), medio (11..20), viejo (21..29)
+
+2. Seleccionar dos técnicas de clasificación y entrenar modelos para predecir las tres categorías creadas.
+	a. Realizar al menos cinco ejecuciones independientes (modificando hiper-parámetros) de ambas técnicas calculando las métricas vistas en clase. 
+		i. Use cross-validation para medir cada ejecución independiente.
+	b. Promediar las métricas entre las cinco ejecuciones independientes.
+	c. Comparar los resultados obtenidos.
+	
+3. Armar un ensemble Stacking usando los 10 modelos del punto 2 como modelos débiles.
+	a. Realizar al menos cinco ejecuciones independientes (modificando hiper-parámetros) calculando las métricas vistas en clase.
+		i. Use cross-validation para medir cada ejecución independiente.
+	b. Promediar las métricas entre las cinco ejecuciones independientes.
+	c. Comparar los resultados obtenidos con los conseguidos en la tarea 2.
