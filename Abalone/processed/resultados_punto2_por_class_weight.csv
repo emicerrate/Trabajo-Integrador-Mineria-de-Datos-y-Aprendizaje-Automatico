@@ -1,5 +1,0 @@
-Algoritmo,class_weight,Accuracy,Precision,Recall,F1-Score,Balanced_Acc,Recall_Joven,Recall_Medio,Recall_Viejo
-DecisionTree,balanced,0.6015,0.4595,0.5874,0.433,0.5874,0.6505,0.5064,0.6054
-DecisionTree,ninguno,0.7438,0.4776,0.4713,0.4716,0.4713,0.8431,0.5708,0.0
-LogisticRegression,balanced,0.6999,0.5041,0.6938,0.508,0.6938,0.7718,0.5596,0.75
-LogisticRegression,ninguno,0.771,0.5067,0.4881,0.4934,0.4881,0.8838,0.5722,0.0083
