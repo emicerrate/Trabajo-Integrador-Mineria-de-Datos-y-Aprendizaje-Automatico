@@ -81,3 +81,23 @@ print(df_resultados.to_string(index=False))
 promedios_totales = df_resultados[["Accuracy", "Precision_Macro", "Recall_Macro", "F1_Macro"]].mean()
 print("\n--- PROMEDIO GENERAL DE LAS CINCO EJECUCIONES ---")
 print(promedios_totales)
+
+
+# INCISO C
+df_etapa2 = pd.read_csv("Abalone/processed/resultados_punto2.csv")
+metricas = ["Accuracy", "Precision", "Recall", "F1-Score"]
+promedios_etapa2 = df_etapa2.groupby("Algoritmo")[metricas].mean()
+
+# Unificamos los nombres de las columnas para los promedios ya calculados
+promedios_totales = promedios_totales.rename({"Precision_Macro": "Precision", "Recall_Macro": "Recall", "F1_Macro": "F1-Score"})
+
+# Hacemos la comparación y agregamos Stacking con sus valores
+comparacion = promedios_etapa2.copy()
+comparacion.loc["Stacking"] = promedios_totales
+print("\n--- COMPARACIÓN DE RESULTADOS PROMEDIO ---")
+print(comparacion)
+
+# Calculamos las diferencias entre las metricas de los modelos de la Etapa 2 y el Stacking
+diferencias = promedios_etapa2.rsub(promedios_totales, axis=1)
+print("\n--- DIFERENCIAS (STACKING - MODELOS INDIVIDUALES) ---")
+print(diferencias)
