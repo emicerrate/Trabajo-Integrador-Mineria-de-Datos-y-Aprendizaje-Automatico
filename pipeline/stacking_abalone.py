@@ -24,7 +24,7 @@ estimadores_base = [
     ('LogReg_1', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=0.1, solver='lbfgs', max_iter=1000))])),
     ('LogReg_2', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=1.0, solver='lbfgs', max_iter=1000))])),
     ('LogReg_3', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=10.0, solver='lbfgs', max_iter=1000))])),
-    ('LogReg_4', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=1.0, solver='saga', penalty='l1', max_iter=2000))])),
+    ('LogReg_4', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=1.0, solver='saga', penalty='l1', max_iter=2000, random_state=42))])),
     ('LogReg_5', Pipeline([('scaler', StandardScaler()), ('logreg', LogisticRegression(C=0.5, solver='newton-cg', max_iter=1000))]))
 ]
 

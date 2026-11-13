@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.model_selection import cross_validate
+from sklearn.model_selection import cross_validate, StratifiedKFold
 
 def entrenar_y_evaluar():
     print("--- CARGA DE DATOS ---")
@@ -39,11 +39,12 @@ def entrenar_y_evaluar():
         {'C': 0.1, 'solver': 'lbfgs', 'max_iter': 1000},
         {'C': 1.0, 'solver': 'lbfgs', 'max_iter': 1000},
         {'C': 10.0, 'solver': 'lbfgs', 'max_iter': 1000},
-        {'C': 1.0, 'solver': 'saga', 'penalty': 'l1', 'max_iter': 2000},
+        {'C': 1.0, 'solver': 'saga', 'penalty': 'l1', 'max_iter': 2000, "random_state": 42},
         {'C': 0.5, 'solver': 'newton-cg', 'max_iter': 1000}
     ]
 
     scoring = ['accuracy', 'precision_macro', 'recall_macro', 'f1_macro']
+    cv_externo = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     resultados_totales = []
     os.makedirs("Abalone/models", exist_ok=True)
 
@@ -55,7 +56,7 @@ def entrenar_y_evaluar():
         modelo = DecisionTreeClassifier(**config)
         nombre_ejecucion = f"DecisionTree_Conf_{i+1}"
         
-        scores = cross_validate(modelo, X, y, cv=5, scoring=scoring)
+        scores = cross_validate(modelo, X, y, cv=cv_externo, scoring=scoring)
         
         resultados_totales.append({
             'Algoritmo': 'DecisionTree',
@@ -80,7 +81,7 @@ def entrenar_y_evaluar():
         ])
         nombre_ejecucion = f"LogReg_Conf_{i+1}"
         
-        scores = cross_validate(modelo, X, y, cv=5, scoring=scoring)
+        scores = cross_validate(modelo, X, y, cv=cv_externo, scoring=scoring)
         
         resultados_totales.append({
             'Algoritmo': 'LogisticRegression',
