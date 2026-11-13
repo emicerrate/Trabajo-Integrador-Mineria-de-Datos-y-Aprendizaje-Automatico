@@ -74,3 +74,10 @@ df_resultados.to_csv("Abalone/processed/resultados_stacking.csv", index=False)
 # Mostramos los resultados finales
 print("\n--- RESULTADOS FINALES DEL STACKING ---")
 print(df_resultados.to_string(index=False))
+
+
+# INCISO B
+# Calculamos el promedio para cada métrica de todas las ejecuciones independientes
+promedios_totales = df_resultados[["Accuracy", "Precision_Macro", "Recall_Macro", "F1_Macro"]].mean()
+print("\n--- PROMEDIO GENERAL DE LAS CINCO EJECUCIONES ---")
+print(promedios_totales)
